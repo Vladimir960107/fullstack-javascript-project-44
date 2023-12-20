@@ -4,10 +4,13 @@ const MIN_RANDOM_INT_EVEN = 1;
 const MAX_RANDOM_INT_EVEN = 100;
 const MIN_RANDOM_INT_CALC = 1;
 const MAX_RANDOM_INT_CALC = 10;
+const MIN_RANDOM_INT_DIVISOR = 1;
+const MAX_RANDOM_INT_DIVISOR = 100;
 const NUMBEROFRIGHTANSWERSBEFOREEXIT = 3;
 const STRING_OF_OPERATIONS = ['+', '-', '*'];
 const GREETING_MESSAGE_EVEN = 'Answer "yes" if the number is even, otherwise answer "no".';
 const GREETING_MESSAGE_CALCULATOR = 'What is the result of the expression?';
+const GREETING_MESSAGE_DIVISOR = 'Find the greatest common divisor of given numbers.';
 
 const GetRandomArbitraryInt = (min, max) => Math.floor(Math.random() * (max - min) + min);
 const IsNumberEvenCheckerYesOrNo = (number) => {
@@ -33,6 +36,23 @@ const Calculator = () => {
       return [null, null];
   }
 };
+const GreatestCommonDivisor = (number1, number2) => {
+  let t;
+  let x = number1;
+  let y = number2;
+  while (y) {
+    t = y;
+    y = x % y;
+    x = t;
+  }
+  return x;
+};
+
+const Divisor = () => {
+  const arbitraryNumber1 = GetRandomArbitraryInt(MIN_RANDOM_INT_DIVISOR, MAX_RANDOM_INT_DIVISOR);
+  const arbitraryNumber2 = GetRandomArbitraryInt(MIN_RANDOM_INT_DIVISOR, MAX_RANDOM_INT_DIVISOR);
+  return [GreatestCommonDivisor(arbitraryNumber1, arbitraryNumber2), `${arbitraryNumber1} ${arbitraryNumber2}`];
+};
 
 const playRound = (counter, game) => {
   let correctAnswer;
@@ -44,6 +64,10 @@ const playRound = (counter, game) => {
       break;
     case 'Calculator':
       [correctAnswer, question] = Calculator();
+      correctAnswer = correctAnswer.toString();
+      break;
+    case 'Divisor':
+      [correctAnswer, question] = Divisor();
       correctAnswer = correctAnswer.toString();
       break;
     default:
@@ -66,6 +90,9 @@ const Game = (name = '', game = 'EvenGame') => {
       break;
     case 'Calculator':
       console.log(GREETING_MESSAGE_CALCULATOR);
+      break;
+    case 'Divisor':
+      console.log(GREETING_MESSAGE_DIVISOR);
       break;
     default:
       console.log('Game was not found. Breaking!');

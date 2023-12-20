@@ -4,4 +4,4 @@ import Game from './brain-even.js';
 
 console.log('Welcome to the Brain Games!');
 const name = AskNameAndGreet();
-Game(name, 'Calculator');
+Game(name, 'Divisor');
