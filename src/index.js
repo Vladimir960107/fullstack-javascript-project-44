@@ -12,12 +12,15 @@ const MIN_PROG_LENGTH = 5;
 const MAX_PROG_LENGTH = 15;
 const RECOMMENDED_PROG_LENGTH = 10;
 const USE_RECOMMENDED_PROG_LENGTH = true;
+const MIN_RANDOM_INT_PRIME = 0;
+const MAX_RANDOM_INT_PRIME = 100;
 const NUMBEROFRIGHTANSWERSBEFOREEXIT = 3;
 const STRING_OF_OPERATIONS = ['+', '-', '*'];
 const GREETING_MESSAGE_EVEN = 'Answer "yes" if the number is even, otherwise answer "no".';
 const GREETING_MESSAGE_CALCULATOR = 'What is the result of the expression?';
 const GREETING_MESSAGE_DIVISOR = 'Find the greatest common divisor of given numbers.';
 const GREETING_MESSAGE_PROGRESSION = 'What number is missing in the progression?';
+const GREETING_MESSAGE_PRIME = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const GetRandomArbitraryInt = (min, max) => Math.floor(Math.random() * (max - min) + min);
 const IsNumberEvenCheckerYesOrNo = (number) => {
@@ -87,6 +90,18 @@ const Progression = () => {
   return CreateProgression(startNumber, progNumber, quantityOfNumbers, missingIndex);
 };
 
+const IsPrimeNumber = (num) => {
+  for (let i = 2, s = Math.sqrt(num); i <= s; i += 1) {
+    if (num % i === 0) return 'no';
+  }
+  return num > 1 ? 'yes' : 'no';
+};
+
+const Prime = () => {
+  const randomPrimeNumber = GetRandomArbitraryInt(MIN_RANDOM_INT_PRIME, MAX_RANDOM_INT_PRIME);
+  return [IsPrimeNumber(randomPrimeNumber), `${randomPrimeNumber}`];
+};
+
 const playRound = (counter, game) => {
   let correctAnswer;
   let question;
@@ -106,6 +121,9 @@ const playRound = (counter, game) => {
     case 'Progression':
       [correctAnswer, question] = Progression();
       correctAnswer = correctAnswer.toString();
+      break;
+    case 'Prime':
+      [correctAnswer, question] = Prime();
       break;
     default:
       [correctAnswer, question] = [null, null];
@@ -133,6 +151,9 @@ const Game = (name = '', game = 'EvenGame') => {
       break;
     case 'Progression':
       console.log(GREETING_MESSAGE_PROGRESSION);
+      break;
+    case 'Prime':
+      console.log(GREETING_MESSAGE_PRIME);
       break;
     default:
       console.log('Game was not found. Breaking!');
