@@ -1,3 +1,5 @@
+import func from './brain-games.js';
 import Game from '../src/index.js';
 
-export default Game;
+const name = func();
+Game(name, 'Progression');
