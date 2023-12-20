@@ -134,7 +134,7 @@ const playRound = (counter, game) => {
     console.log('Correct!');
     return counter + 1;
   }
-  console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'`);
+  console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
   return -1;
 };
 
@@ -163,10 +163,10 @@ const Game = (name = '', game = 'EvenGame') => {
   while (counterOfRightAnswers < NUMBEROFRIGHTANSWERSBEFOREEXIT) {
     counterOfRightAnswers = playRound(counterOfRightAnswers, game);
     if (counterOfRightAnswers === -1) {
-      console.log(`Let's try again, ${name}`);
+      console.log(`Let's try again, ${name}!`);
       break;
     } else if (counterOfRightAnswers === NUMBEROFRIGHTANSWERSBEFOREEXIT) {
-      console.log(`Congratulations, ${name}`);
+      console.log(`Congratulations, ${name}!`);
     }
   }
 };
