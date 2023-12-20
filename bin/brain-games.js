@@ -6,5 +6,6 @@ const func = () => {
   const name = AskNameAndGreet();
   return name;
 };
+const name = func();
 
-export default func;
+export default name;
