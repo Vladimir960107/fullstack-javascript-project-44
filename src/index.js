@@ -6,11 +6,18 @@ const MIN_RANDOM_INT_CALC = 1;
 const MAX_RANDOM_INT_CALC = 10;
 const MIN_RANDOM_INT_DIVISOR = 1;
 const MAX_RANDOM_INT_DIVISOR = 100;
+const MIN_RANDOM_INT_PROG_START = 1;
+const MAX_RANDOM_INT_PROG_START = 10;
+const MIN_PROG_LENGTH = 5;
+const MAX_PROG_LENGTH = 15;
+const RECOMMENDED_PROG_LENGTH = 10;
+const USE_RECOMMENDED_PROG_LENGTH = true;
 const NUMBEROFRIGHTANSWERSBEFOREEXIT = 3;
 const STRING_OF_OPERATIONS = ['+', '-', '*'];
 const GREETING_MESSAGE_EVEN = 'Answer "yes" if the number is even, otherwise answer "no".';
 const GREETING_MESSAGE_CALCULATOR = 'What is the result of the expression?';
 const GREETING_MESSAGE_DIVISOR = 'Find the greatest common divisor of given numbers.';
+const GREETING_MESSAGE_PROGRESSION = 'What number is missing in the progression?';
 
 const GetRandomArbitraryInt = (min, max) => Math.floor(Math.random() * (max - min) + min);
 const IsNumberEvenCheckerYesOrNo = (number) => {
@@ -19,8 +26,36 @@ const IsNumberEvenCheckerYesOrNo = (number) => {
   } if (number % 2 === 1) {
     return 'no';
   }
-  return null;// For cases where the number is not an integer
+  return null;
 };
+
+const GreatestCommonDivisor = (number1, number2) => {
+  let t;
+  let x = number1;
+  let y = number2;
+  while (y) {
+    t = y;
+    y = x % y;
+    x = t;
+  }
+  return x;
+};
+const CreateProgression = (startNumber, progNumber, quantityOfNumbers, missingIndex) => {
+  let progression = '';
+  let temp = startNumber;
+  const missingNumber = startNumber + missingIndex * progNumber;
+  for (let i = 0; i < quantityOfNumbers; i += 1) {
+    if (i === missingIndex) {
+      progression += '.. ';
+      temp += progNumber;
+    } else {
+      progression += `${temp} `;
+      temp += progNumber;
+    }
+  }
+  return [missingNumber, progression];
+};
+
 const Calculator = () => {
   const arbitraryNumber1 = GetRandomArbitraryInt(MIN_RANDOM_INT_CALC, MAX_RANDOM_INT_CALC);
   const arbitraryNumber2 = GetRandomArbitraryInt(MIN_RANDOM_INT_CALC, MAX_RANDOM_INT_CALC);
@@ -36,22 +71,20 @@ const Calculator = () => {
       return [null, null];
   }
 };
-const GreatestCommonDivisor = (number1, number2) => {
-  let t;
-  let x = number1;
-  let y = number2;
-  while (y) {
-    t = y;
-    y = x % y;
-    x = t;
-  }
-  return x;
-};
 
 const Divisor = () => {
   const arbitraryNumber1 = GetRandomArbitraryInt(MIN_RANDOM_INT_DIVISOR, MAX_RANDOM_INT_DIVISOR);
   const arbitraryNumber2 = GetRandomArbitraryInt(MIN_RANDOM_INT_DIVISOR, MAX_RANDOM_INT_DIVISOR);
   return [GreatestCommonDivisor(arbitraryNumber1, arbitraryNumber2), `${arbitraryNumber1} ${arbitraryNumber2}`];
+};
+
+const Progression = () => {
+  const startNumber = GetRandomArbitraryInt(MIN_RANDOM_INT_PROG_START, MAX_RANDOM_INT_PROG_START);
+  const progNumber = GetRandomArbitraryInt(MIN_RANDOM_INT_PROG_START, MAX_RANDOM_INT_PROG_START);
+  const RandQuantity = GetRandomArbitraryInt(MIN_PROG_LENGTH, MAX_PROG_LENGTH);
+  const quantityOfNumbers = USE_RECOMMENDED_PROG_LENGTH ? RECOMMENDED_PROG_LENGTH : RandQuantity;
+  const missingIndex = GetRandomArbitraryInt(0, quantityOfNumbers);
+  return CreateProgression(startNumber, progNumber, quantityOfNumbers, missingIndex);
 };
 
 const playRound = (counter, game) => {
@@ -68,6 +101,10 @@ const playRound = (counter, game) => {
       break;
     case 'Divisor':
       [correctAnswer, question] = Divisor();
+      correctAnswer = correctAnswer.toString();
+      break;
+    case 'Progression':
+      [correctAnswer, question] = Progression();
       correctAnswer = correctAnswer.toString();
       break;
     default:
@@ -93,6 +130,9 @@ const Game = (name = '', game = 'EvenGame') => {
       break;
     case 'Divisor':
       console.log(GREETING_MESSAGE_DIVISOR);
+      break;
+    case 'Progression':
+      console.log(GREETING_MESSAGE_PROGRESSION);
       break;
     default:
       console.log('Game was not found. Breaking!');
