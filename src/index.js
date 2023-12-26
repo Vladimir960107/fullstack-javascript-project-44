@@ -9,15 +9,19 @@ import Prime from './games/prime.js';
 
 const MIN_RANDOM_INT_EVEN = 1;
 const MAX_RANDOM_INT_EVEN = 100;
-const NUMBEROFRIGHTANSWERSBEFOREEXIT = 3;
-const GREETING_MESSAGE_EVEN = 'Answer "yes" if the number is even, otherwise answer "no".';
-const GREETING_MESSAGE_CALCULATOR = 'What is the result of the expression?';
-const GREETING_MESSAGE_DIVISOR = 'Find the greatest common divisor of given numbers.';
-const GREETING_MESSAGE_PROGRESSION = 'What number is missing in the progression?';
-const GREETING_MESSAGE_PRIME = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-const playRound = (counter, game) => {
-  let correctAnswer;
+const NUMBER_OF_RIGHT_ANSWERS_BEFORE_EXIT = 3;
+
+const GREETING_MESSAGES = {
+  EvenGame: 'Answer "yes" if the number is even, otherwise answer "no".',
+  Calculator: 'What is the result of the expression?',
+  Divisor: 'Find the greatest common divisor of given numbers.',
+  Progression: 'What number is missing in the progression?',
+  Prime: 'Answer "yes" if given number is prime. Otherwise answer "no".',
+};
+
+const getQuestionAndAnswer = (game) => {
   let question;
+  let correctAnswer;
   switch (game) {
     case 'EvenGame':
       question = GetRandomArbitraryInt(MIN_RANDOM_INT_EVEN, MAX_RANDOM_INT_EVEN);
@@ -39,10 +43,16 @@ const playRound = (counter, game) => {
       [correctAnswer, question] = Prime();
       break;
     default:
-      [correctAnswer, question] = [null, null];
+      return [null, null];
   }
+  return [question, correctAnswer];
+};
+
+const playRound = (counter, game) => {
+  const [question, correctAnswer] = getQuestionAndAnswer(game);
   console.log(`Question: ${question}`);
   const answer = readlineSync.question('Your answer: ');
+
   if (answer === correctAnswer) {
     console.log('Correct!');
     return counter + 1;
@@ -51,35 +61,21 @@ const playRound = (counter, game) => {
   return -1;
 };
 
+const displayGreetingMessage = (game) => {
+  console.log(GREETING_MESSAGES[game] || 'Game was not found. Breaking!');
+};
+
 const Game = (game = 'EvenGame') => {
   const userName = AskNameAndGreet();
-  switch (game) {
-    case 'EvenGame':
-      console.log(GREETING_MESSAGE_EVEN);
-      break;
-    case 'Calculator':
-      console.log(GREETING_MESSAGE_CALCULATOR);
-      break;
-    case 'Divisor':
-      console.log(GREETING_MESSAGE_DIVISOR);
-      break;
-    case 'Progression':
-      console.log(GREETING_MESSAGE_PROGRESSION);
-      break;
-    case 'Prime':
-      console.log(GREETING_MESSAGE_PRIME);
-      break;
-    default:
-      console.log('Game was not found. Breaking!');
-      return;
-  }
+  displayGreetingMessage(game);
+
   let counterOfRightAnswers = 0;
-  while (counterOfRightAnswers < NUMBEROFRIGHTANSWERSBEFOREEXIT) {
+  while (counterOfRightAnswers < NUMBER_OF_RIGHT_ANSWERS_BEFORE_EXIT) {
     counterOfRightAnswers = playRound(counterOfRightAnswers, game);
     if (counterOfRightAnswers === -1) {
       console.log(`Let's try again, ${userName}!`);
       break;
-    } else if (counterOfRightAnswers === NUMBEROFRIGHTANSWERSBEFOREEXIT) {
+    } else if (counterOfRightAnswers === NUMBER_OF_RIGHT_ANSWERS_BEFORE_EXIT) {
       console.log(`Congratulations, ${userName}!`);
     }
   }
