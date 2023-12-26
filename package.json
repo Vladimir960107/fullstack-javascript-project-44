@@ -1,5 +1,5 @@
 {
-  "name": "@hexlet/code",
+  "name": "fullstack-javascript-project-44",
   "version": "1.0.0",
   "type": "module",
   "bin": {
@@ -10,13 +10,13 @@
     "brain-progression": "bin/brain-progression.js",
     "brain-prime": "bin/brain-prime.js"
   },
-  "description": "[![Actions Status](https://github.com/Vladimir960107/fullstack-javascript-project-44/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Vladimir960107/fullstack-javascript-project-44/actions)",
+  "description": "A comprehensive fullstack JavaScript application demonstrating modern web development practices.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Vladimir Loginov <loginov.volodia@gmail.com> ",
+  "license": "MIT",
   "dependencies": {
     "readline-sync": "^1.4.10"
   },
