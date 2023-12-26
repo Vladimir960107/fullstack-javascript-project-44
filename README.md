@@ -1,7 +1,7 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/Vladimir960107/fullstack-javascript-project-44/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Vladimir960107/fullstack-javascript-project-44/actions)
 
-<a href="https://codeclimate.com/github/Vladimir960107/fullstack-javascript-project-44/maintainability"><img src="https://api.codeclimate.com/v1/badges/4fc64463b4e259c2943b/maintainability" /></a>
+[![Maintainability](https://api.codeclimate.com/v1/badges/4fc64463b4e259c2943b/maintainability)](https://codeclimate.com/github/Vladimir960107/fullstack-javascript-project-44/maintainability)
 
 # Fullstack JavaScript Project 44
 
@@ -19,14 +19,11 @@ Fullstack JavaScript Project 44 is developed as part of a learning journey in fu
 
 To install this project, run the following command:
 
-```bash
 npm install fullstack-javascript-project-44
 
 ## Running the Project
 
 To run this project locally, execute:
-
-```bash
 
 npm start
 
