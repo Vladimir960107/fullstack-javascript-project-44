@@ -1,3 +1,3 @@
-const GetRandomArbitraryInt = (min, max) => Math.floor(Math.random() * (max - min) + min);
+const getRandomArbitraryInt = (min, max) => Math.floor(Math.random() * (max - min) + min);
 
-export default GetRandomArbitraryInt;
+export default getRandomArbitraryInt;

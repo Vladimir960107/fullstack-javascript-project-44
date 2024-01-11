@@ -1,4 +1,4 @@
-import GetRandomArbitraryInt from './getrandom.js';
+import getRandomArbitraryInt from './getrandom.js';
 
 const MIN_RANDOM_INT_PROG_START = 1;
 const MAX_RANDOM_INT_PROG_START = 10;
@@ -23,13 +23,13 @@ const CreateProgression = (startNumber, progNumber, quantityOfNumbers, missingIn
   return [missingNumber, progression];
 };
 
-const Progression = () => {
-  const startNumber = GetRandomArbitraryInt(MIN_RANDOM_INT_PROG_START, MAX_RANDOM_INT_PROG_START);
-  const progNumber = GetRandomArbitraryInt(MIN_RANDOM_INT_PROG_START, MAX_RANDOM_INT_PROG_START);
-  const RandQuantity = GetRandomArbitraryInt(MIN_PROG_LENGTH, MAX_PROG_LENGTH);
+const generateProgression = () => {
+  const startNumber = getRandomArbitraryInt(MIN_RANDOM_INT_PROG_START, MAX_RANDOM_INT_PROG_START);
+  const progNumber = getRandomArbitraryInt(MIN_RANDOM_INT_PROG_START, MAX_RANDOM_INT_PROG_START);
+  const RandQuantity = getRandomArbitraryInt(MIN_PROG_LENGTH, MAX_PROG_LENGTH);
   const quantityOfNumbers = USE_RECOMMENDED_PROG_LENGTH ? RECOMMENDED_PROG_LENGTH : RandQuantity;
-  const missingIndex = GetRandomArbitraryInt(0, quantityOfNumbers);
+  const missingIndex = getRandomArbitraryInt(0, quantityOfNumbers);
   return CreateProgression(startNumber, progNumber, quantityOfNumbers, missingIndex);
 };
 
-export default Progression;
+export default generateProgression;

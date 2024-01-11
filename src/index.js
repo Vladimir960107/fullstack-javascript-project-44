@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import AskNameAndGreet from './cli.js';
+import askNameAndGreet from './cli.js';
 import GetRandomArbitraryInt from './games/getrandom.js';
 import Calculator from './games/calculator.js';
 import Divisor from './games/gcd.js';
@@ -65,13 +65,13 @@ const displayGreetingMessage = (game) => {
   console.log(GREETING_MESSAGES[game] || 'Game was not found. Breaking!');
 };
 
-const Game = (game = 'EvenGame') => {
-  const userName = AskNameAndGreet();
-  displayGreetingMessage(game);
+const playGame = (gameChosen = 'EvenGame') => {
+  const userName = askNameAndGreet();
+  displayGreetingMessage(gameChosen);
 
   let counterOfRightAnswers = 0;
   while (counterOfRightAnswers < NUMBER_OF_RIGHT_ANSWERS_BEFORE_EXIT) {
-    counterOfRightAnswers = playRound(counterOfRightAnswers, game);
+    counterOfRightAnswers = playRound(counterOfRightAnswers, gameChosen);
     if (counterOfRightAnswers === -1) {
       console.log(`Let's try again, ${userName}!`);
       break;
@@ -81,4 +81,4 @@ const Game = (game = 'EvenGame') => {
   }
 };
 
-export default Game;
+export default playGame;
