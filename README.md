@@ -19,13 +19,13 @@ Fullstack JavaScript Project 44 is developed as part of a learning journey in fu
 
 To install this project, run the following command:
 
-npm install fullstack-javascript-project-44
+`npm install fullstack-javascript-project-44`
 
 ## Running the Project
 
 To run this project locally, execute:
 
-npm start
+`npm start`
 
 ## Feedback
 
