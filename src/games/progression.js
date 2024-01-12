@@ -23,7 +23,7 @@ const createProgression = (startNumber, step, length, hiddenIndex) => {
     currentNumber += step;
   }
 
-  return [hiddenNumber.toString(), progression.trim()];
+  return [progression.trim(), hiddenNumber.toString()];
 };
 
 // Начальное сообщение игры
