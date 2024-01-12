@@ -16,6 +16,14 @@ const games = {
   Calculator,
 };
 
+const congratulateUser = (userName) => {
+  console.log(`Congratulations, ${userName}!`);
+};
+
+const encourageUserToTryAgain = (userName) => {
+  console.log(`Let's try again, ${userName}!`);
+};
+
 const playRound = (gameModule) => {
   const [question, correctAnswer] = gameModule.playRound();
   console.log(`Question: ${question}`);
@@ -29,26 +37,33 @@ const playRound = (gameModule) => {
   return -1;
 };
 
-const playGame = (gameChosen = 'Even') => {
-  const gameModule = games[gameChosen];
-  const userName = askNameAndGreet();
-  console.log(gameModule.startGame());
-
+const playGameRounds = (gameModule, userName) => {
   let counterOfRightAnswers = 0;
-  const fuckTheLinter = true;
-  while (fuckTheLinter) {
+  while (counterOfRightAnswers < NUMBER_OF_RIGHT_ANSWERS_BEFORE_EXIT) {
     const isCorrect = playRound(gameModule);
     if (isCorrect) {
       counterOfRightAnswers += 1;
       if (counterOfRightAnswers === NUMBER_OF_RIGHT_ANSWERS_BEFORE_EXIT) {
-        console.log(`Congratulations, ${userName}!`);
+        congratulateUser(userName);
         break;
       }
     } else {
-      console.log(`Let's try again, ${userName}!`);
+      encourageUserToTryAgain(userName);
       break;
     }
   }
+};
+
+const displayGameInstructions = (gameModule) => {
+  console.log(gameModule.startGame());
+};
+
+const playGame = (gameChosen = 'Even') => {
+  const gameModule = games[gameChosen];
+  const userName = askNameAndGreet();
+  displayGameInstructions(gameModule);
+
+  playGameRounds(gameModule, userName);
 };
 
 export default playGame;
