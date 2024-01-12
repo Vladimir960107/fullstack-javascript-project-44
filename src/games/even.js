@@ -1,10 +1,20 @@
-const IsNumberEvenCheckerYesOrNo = (number) => {
-  if (number % 2 === 0) {
-    return 'yes';
-  } if (number % 2 === 1) {
-    return 'no';
-  }
-  return null;
+// evenGame.js
+import generateNumber from '../utils.js';
+
+const MIN_RANDOM_INT_EVEN = 1;
+const MAX_RANDOM_INT_EVEN = 100;
+
+// Функция для проверки, является ли число четным
+const isNumberEven = (number) => number % 2 === 0;
+
+// Функция для вывода начального сообщения игры
+export const startGame = () => 'Answer "yes" if the number is even, otherwise answer "no".';
+
+// Функция для проведения раунда игры
+export const playRound = () => {
+  const question = generateNumber(MIN_RANDOM_INT_EVEN, MAX_RANDOM_INT_EVEN);
+  const correctAnswer = isNumberEven(question) ? 'yes' : 'no';
+  return [question, correctAnswer];
 };
 
-export default IsNumberEvenCheckerYesOrNo;
+export default { startGame, playRound };

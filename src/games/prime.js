@@ -1,18 +1,30 @@
-import getRandomArbitraryInt from './getrandom.js';
+// prime.js
+import generateNumber from '../utils.js';
 
-const MIN_RANDOM_INT_PRIME = 0;
+const MIN_RANDOM_INT_PRIME = 2;
 const MAX_RANDOM_INT_PRIME = 100;
 
-const IsPrimeNumber = (num) => {
-  for (let i = 2, s = Math.sqrt(num); i <= s; i += 1) {
-    if (num % i === 0) return 'no';
+// Функция для проверки, является ли число простым
+const isPrime = (number) => {
+  if (number < 2) {
+    return false;
   }
-  return num > 1 ? 'yes' : 'no';
+  for (let i = 2; i <= Math.sqrt(number); i += 1) {
+    if (number % i === 0) {
+      return false;
+    }
+  }
+  return true;
 };
 
-const generatePrime = () => {
-  const randomPrimeNumber = getRandomArbitraryInt(MIN_RANDOM_INT_PRIME, MAX_RANDOM_INT_PRIME);
-  return [IsPrimeNumber(randomPrimeNumber), `${randomPrimeNumber}`];
+// Начальное сообщение игры
+export const startGame = () => 'Answer "yes" if given number is prime. Otherwise answer "no".';
+
+// Раунд игры
+export const playRound = () => {
+  const question = generateNumber(MIN_RANDOM_INT_PRIME, MAX_RANDOM_INT_PRIME);
+  const correctAnswer = isPrime(question) ? 'yes' : 'no';
+  return [question, correctAnswer];
 };
 
-export default generatePrime;
+export default { startGame, playRound };

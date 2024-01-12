@@ -1,9 +1,9 @@
-import getRandomArbitraryInt from './getrandom.js';
+import generateNumber from '../utils.js';
 
 const MIN_RANDOM_INT_DIVISOR = 1;
 const MAX_RANDOM_INT_DIVISOR = 100;
 
-const GreatestCommonDivisor = (number1, number2) => {
+const findGreatestCommonDivisor = (number1, number2) => {
   let t;
   let x = number1;
   let y = number2;
@@ -15,10 +15,14 @@ const GreatestCommonDivisor = (number1, number2) => {
   return x;
 };
 
-const generateDivisor = () => {
-  const arbitraryNumber1 = getRandomArbitraryInt(MIN_RANDOM_INT_DIVISOR, MAX_RANDOM_INT_DIVISOR);
-  const arbitraryNumber2 = getRandomArbitraryInt(MIN_RANDOM_INT_DIVISOR, MAX_RANDOM_INT_DIVISOR);
-  return [GreatestCommonDivisor(arbitraryNumber1, arbitraryNumber2), `${arbitraryNumber1} ${arbitraryNumber2}`];
+export const startGame = () => 'Find the greatest common divisor of given numbers.';
+
+const playRound = () => {
+  const arbitraryNumber1 = generateNumber(MIN_RANDOM_INT_DIVISOR, MAX_RANDOM_INT_DIVISOR);
+  const arbitraryNumber2 = generateNumber(MIN_RANDOM_INT_DIVISOR, MAX_RANDOM_INT_DIVISOR);
+  const question = `${arbitraryNumber1} ${arbitraryNumber2}`;
+  const correctAnswer = findGreatestCommonDivisor(arbitraryNumber1, arbitraryNumber2).toString();
+  return [question, correctAnswer];
 };
 
-export default generateDivisor;
+export default { startGame, playRound };
