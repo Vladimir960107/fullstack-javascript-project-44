@@ -31,10 +31,10 @@ const playRound = (gameModule) => {
 
   if (answer === correctAnswer) {
     console.log('Correct!');
-    return 1;
+    return true;
   }
   console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
-  return -1;
+  return false;
 };
 
 const playGameRounds = (gameModule, userName) => {
