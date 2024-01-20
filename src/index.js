@@ -55,7 +55,7 @@ const playGameRounds = (gameModule, userName) => {
 };
 
 const displayGameInstructions = (gameModule) => {
-  console.log(gameModule.startGame());
+  console.log(gameModule.description);
 };
 
 const playGame = (gameChosen = 'Even') => {

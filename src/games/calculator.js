@@ -27,7 +27,7 @@ const calculateExpression = (num1, num2, operation) => {
 };
 
 // Начальное сообщение игры
-export const startGame = () => 'What is the result of the expression?';
+export const description = 'What is the result of the expression?';
 
 // Раунд игры
 export const playRound = () => {
@@ -40,4 +40,4 @@ export const playRound = () => {
   return [question, correctAnswer];
 };
 
-export default { startGame, playRound };
+export default { description, playRound };

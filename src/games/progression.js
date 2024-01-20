@@ -27,7 +27,7 @@ const createProgression = (startNumber, step, length, hiddenIndex) => {
 };
 
 // Начальное сообщение игры
-export const startGame = () => 'What number is missing in the progression?';
+export const description = 'What number is missing in the progression?';
 
 // Раунд игры
 export const playRound = () => {
@@ -41,4 +41,4 @@ export const playRound = () => {
   return createProgression(startNumber, step, length, hiddenIndex);
 };
 
-export default { startGame, playRound };
+export default { description, playRound };

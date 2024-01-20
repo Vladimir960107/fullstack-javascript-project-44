@@ -18,7 +18,7 @@ const isPrime = (number) => {
 };
 
 // Начальное сообщение игры
-export const startGame = () => 'Answer "yes" if given number is prime. Otherwise answer "no".';
+export const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 // Раунд игры
 export const playRound = () => {
@@ -27,4 +27,4 @@ export const playRound = () => {
   return [question, correctAnswer];
 };
 
-export default { startGame, playRound };
+export default { description, playRound };
