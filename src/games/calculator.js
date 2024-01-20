@@ -1,10 +1,8 @@
+import generateNumber from '../utils.js';
 // gameCalculator.js
 const MIN_NUMBER = 1;
 const MAX_NUMBER = 10;
 const OPERATIONS = ['+', '-', '*'];
-
-// Генерация случайного числа
-const generateNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
 // Выбор случайной математической операции
 const getRandomOperation = () => {
