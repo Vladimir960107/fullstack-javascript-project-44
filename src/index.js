@@ -1,20 +1,7 @@
 import readlineSync from 'readline-sync';
 import askNameAndGreet from './askName.js';
-import * as Calculator from './games/calculator.js';
-import * as GCD from './games/gcd.js';
-import * as Even from './games/even.js';
-import * as Progression from './games/progression.js';
-import * as Prime from './games/prime.js';
 
 const NUMBER_OF_RIGHT_ANSWERS_BEFORE_EXIT = 3;
-
-const games = {
-  Even,
-  GCD,
-  Prime,
-  Progression,
-  Calculator,
-};
 
 const playRound = (gameModule) => {
   const [question, correctAnswer] = gameModule.playRound();
@@ -43,8 +30,8 @@ const playGameRounds = (gameModule, userName) => {
   }
 };
 
-const playGame = (gameChosen = 'Even') => {
-  const gameModule = games[gameChosen];
+const playGame = (gameChosen) => {
+  const gameModule = gameChosen;
   const userName = askNameAndGreet();
   console.log(gameModule.description);
 
