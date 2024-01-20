@@ -21,10 +21,10 @@ export const playRound = () => {
   const hiddenIndex = generateNumber(0, RECOMMENDED_PROG_LENGTH - 1);
 
   const progression = createProgression(startNumber, step, RECOMMENDED_PROG_LENGTH);
-  const answer = progression[hiddenIndex].toString();
+  const correctAnswer = progression[hiddenIndex].toString();
   progression[hiddenIndex] = '..';
   const question = progression.join(' ');
-  return [question, answer];
+  return [question, correctAnswer];
 };
 
 export default { description, playRound };
