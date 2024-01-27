@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import askNameAndGreet from './askName.js';
+import AskNameAndGreet from './cli.js';
 
 const RIGHT_ANSWERS_COUNT = 3;
 
@@ -17,19 +17,16 @@ const playRound = (gameModule) => {
 };
 
 const playGame = (gameModule) => {
-  const userName = askNameAndGreet();
+  const userName = AskNameAndGreet();
   console.log(gameModule.description);
   for (let i = 0; i < RIGHT_ANSWERS_COUNT; i += 1) {
     const isCorrect = playRound(gameModule);
-    if (isCorrect) {
-      if (i === RIGHT_ANSWERS_COUNT - 1) {
-        console.log(`Congratulations, ${userName}!`);
-      }
-    } else {
+    if (!isCorrect) {
       console.log(`Let's try again, ${userName}!`);
       return;
     }
   }
+  console.log(`Congratulations, ${userName}!`);
 };
 
 export default playGame;
