@@ -16,7 +16,9 @@ const playRound = (gameModule) => {
   return false;
 };
 
-const playGameRounds = (gameModule, userName) => {
+const playGame = (gameModule) => {
+  const userName = askNameAndGreet();
+  console.log(gameModule.description);
   for (let i = 0; i < RIGHT_ANSWERS_COUNT; i += 1) {
     const isCorrect = playRound(gameModule);
     if (isCorrect) {
@@ -25,17 +27,9 @@ const playGameRounds = (gameModule, userName) => {
       }
     } else {
       console.log(`Let's try again, ${userName}!`);
-      break;
+      return;
     }
   }
-};
-
-const playGame = (gameChosen) => {
-  const gameModule = gameChosen;
-  const userName = askNameAndGreet();
-  console.log(gameModule.description);
-
-  playGameRounds(gameModule, userName);
 };
 
 export default playGame;
