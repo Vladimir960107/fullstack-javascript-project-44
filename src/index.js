@@ -1,7 +1,7 @@
 import readlineSync from 'readline-sync';
 import askNameAndGreet from './askName.js';
 
-const NUMBER_OF_RIGHT_ANSWERS_BEFORE_EXIT = 3;
+const RIGHT_ANSWERS_COUNT = 3;
 
 const playRound = (gameModule) => {
   const [question, correctAnswer] = gameModule.playRound();
@@ -17,10 +17,10 @@ const playRound = (gameModule) => {
 };
 
 const playGameRounds = (gameModule, userName) => {
-  for (let i = 0; i < NUMBER_OF_RIGHT_ANSWERS_BEFORE_EXIT; i += 1) {
+  for (let i = 0; i < RIGHT_ANSWERS_COUNT; i += 1) {
     const isCorrect = playRound(gameModule);
     if (isCorrect) {
-      if (i === NUMBER_OF_RIGHT_ANSWERS_BEFORE_EXIT - 1) {
+      if (i === RIGHT_ANSWERS_COUNT - 1) {
         console.log(`Congratulations, ${userName}!`);
       }
     } else {
