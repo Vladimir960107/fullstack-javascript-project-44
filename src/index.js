@@ -1,7 +1,7 @@
 import readlineSync from 'readline-sync';
 import AskNameAndGreet from './cli.js';
 
-const RIGHT_ANSWERS_COUNT = 3;
+const ROUNDS_COUNT = 3;
 
 const playRound = (gameModule) => {
   const [question, correctAnswer] = gameModule.playRound();
@@ -19,7 +19,7 @@ const playRound = (gameModule) => {
 const playGame = (gameModule) => {
   const userName = AskNameAndGreet();
   console.log(gameModule.description);
-  for (let i = 0; i < RIGHT_ANSWERS_COUNT; i += 1) {
+  for (let i = 0; i < ROUNDS_COUNT; i += 1) {
     const isCorrect = playRound(gameModule);
     if (!isCorrect) {
       console.log(`Let's try again, ${userName}!`);
