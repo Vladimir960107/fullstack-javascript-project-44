@@ -21,10 +21,10 @@ const isPrime = (number) => {
 export const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 // Раунд игры
-export const playRound = () => {
+export const generateRound = () => {
   const question = generateNumber(MIN_RANDOM_INT_PRIME, MAX_RANDOM_INT_PRIME);
   const correctAnswer = isPrime(question) ? 'yes' : 'no';
   return [question, correctAnswer];
 };
 
-export default { description, playRound };
+export default { description, generateRound };

@@ -15,7 +15,7 @@ const createProgression = (startNumber, step, length) => {
 export const description = 'What number is missing in the progression?';
 
 // Раунд игры
-export const playRound = () => {
+export const generateRound = () => {
   const startNumber = generateNumber(MIN_RANDOM_INT_PROG_START, MAX_RANDOM_INT_PROG_START);
   const step = generateNumber(MIN_RANDOM_INT_PROG_START, MAX_RANDOM_INT_PROG_START);
   const hiddenIndex = generateNumber(0, RECOMMENDED_PROG_LENGTH - 1);
@@ -27,4 +27,4 @@ export const playRound = () => {
   return [question, correctAnswer];
 };
 
-export default { description, playRound };
+export default { description, generateRound };

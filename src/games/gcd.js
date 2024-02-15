@@ -17,7 +17,7 @@ const findGreatestCommonDivisor = (number1, number2) => {
 
 export const description = 'Find the greatest common divisor of given numbers.';
 
-export const playRound = () => {
+export const generateRound = () => {
   const arbitraryNumber1 = generateNumber(MIN_RANDOM_INT_DIVISOR, MAX_RANDOM_INT_DIVISOR);
   const arbitraryNumber2 = generateNumber(MIN_RANDOM_INT_DIVISOR, MAX_RANDOM_INT_DIVISOR);
   const question = `${arbitraryNumber1} ${arbitraryNumber2}`;
@@ -25,4 +25,4 @@ export const playRound = () => {
   return [question, correctAnswer];
 };
 
-export default { description, playRound };
+export default { description, generateRound };

@@ -8,20 +8,20 @@ const playGame = (gameModule) => {
   console.log(gameModule.description);
 
   for (let i = 0; i < ROUNDS_COUNT; i += 1) {
-    const [question, correctAnswer] = gameModule.playRound();
+    const [question, correctAnswer] = gameModule.generateRound();
     console.log(`Question: ${question}`);
-    const answer = readlineSync.question('Your answer: '); // Assuming readlineSync is required/imported elsewhere.
+    const answer = readlineSync.question('Your answer: ');
 
     if (answer === correctAnswer) {
       console.log('Correct!');
     } else {
       console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
       console.log(`Let's try again, ${userName}!`);
-      return; // Exits the function if the answer is incorrect.
+      return;
     }
   }
 
-  console.log(`Congratulations, ${userName}!`); // This line is reached only if all answers are correct.
+  console.log(`Congratulations, ${userName}!`);
 };
 
 export default playGame;
