@@ -18,10 +18,10 @@ const findGreatestCommonDivisor = (number1, number2) => {
 export const description = 'Find the greatest common divisor of given numbers.';
 
 export const generateRound = () => {
-  const arbitraryNumber1 = generateNumber(MIN_RANDOM_INT_DIVISOR, MAX_RANDOM_INT_DIVISOR);
-  const arbitraryNumber2 = generateNumber(MIN_RANDOM_INT_DIVISOR, MAX_RANDOM_INT_DIVISOR);
-  const question = `${arbitraryNumber1} ${arbitraryNumber2}`;
-  const correctAnswer = findGreatestCommonDivisor(arbitraryNumber1, arbitraryNumber2).toString();
+  const num1 = generateNumber(MIN_RANDOM_INT_DIVISOR, MAX_RANDOM_INT_DIVISOR);
+  const num2 = generateNumber(MIN_RANDOM_INT_DIVISOR, MAX_RANDOM_INT_DIVISOR);
+  const question = `${num1} ${num2}`;
+  const correctAnswer = findGreatestCommonDivisor(num1, num2).toString();
   return [question, correctAnswer];
 };
 
