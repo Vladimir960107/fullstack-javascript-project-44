@@ -16,8 +16,9 @@ export const generateRound = () => {
 
   const progression = Array.from({ length: PROG_LENGTH }, (_, i) => startNumber + step * i);
   const correctAnswer = progression[hiddenIndex].toString();
-  progression.splice(hiddenIndex, 1, '..').toString();
-  return [progression, correctAnswer];
+  progression.splice(hiddenIndex, 1, '..');
+  const question = progression.join(' ');
+  return [question, correctAnswer];
 };
 
 export default { description, generateRound };
