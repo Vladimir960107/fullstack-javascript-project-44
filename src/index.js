@@ -1,10 +1,10 @@
 import readlineSync from 'readline-sync';
-import AskNameAndGreet from './cli.js';
+import askNameAndGreet from './cli.js';
 
 const ROUNDS_COUNT = 3;
 
 const playGame = (gameModule) => {
-  const userName = AskNameAndGreet();
+  const userName = askNameAndGreet();
   console.log(gameModule.description);
 
   for (let i = 0; i < ROUNDS_COUNT; i += 1) {

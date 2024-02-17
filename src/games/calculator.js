@@ -1,10 +1,10 @@
 import generateNumber from '../utils.js';
-// gameCalculator.js
+
 const MIN_NUMBER = 1;
 const MAX_NUMBER = 10;
 const OPERATIONS = ['+', '-', '*'];
 
-// Вычисление результата выражения
+/** Calculation of the expression */
 const calculateExpression = (num1, num2, operation) => {
   switch (operation) {
     case '+':
@@ -18,10 +18,10 @@ const calculateExpression = (num1, num2, operation) => {
   }
 };
 
-// Начальное сообщение игры
+//* Initial game message */
 export const description = 'What is the result of the expression?';
 
-// Раунд игры
+/** Game Round */
 export const generateRound = () => {
   const num1 = generateNumber(MIN_NUMBER, MAX_NUMBER);
   const num2 = generateNumber(MIN_NUMBER, MAX_NUMBER);
@@ -31,5 +31,3 @@ export const generateRound = () => {
 
   return [question, correctAnswer];
 };
-
-export default { description, generateRound };

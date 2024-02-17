@@ -24,5 +24,3 @@ export const generateRound = () => {
   const correctAnswer = findGreatestCommonDivisor(num1, num2).toString();
   return [question, correctAnswer];
 };
-
-export default { description, generateRound };

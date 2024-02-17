@@ -1,14 +1,11 @@
-// progression.js
 import generateNumber from '../utils.js';
 
 const MIN_RANDOM_INT_PROG_START = 1;
 const MAX_RANDOM_INT_PROG_START = 10;
 const PROG_LENGTH = 10;
 
-// Начальное сообщение игры
 export const description = 'What number is missing in the progression?';
 
-// Раунд игры
 export const generateRound = () => {
   const startNumber = generateNumber(MIN_RANDOM_INT_PROG_START, MAX_RANDOM_INT_PROG_START);
   const step = generateNumber(MIN_RANDOM_INT_PROG_START, MAX_RANDOM_INT_PROG_START);
@@ -20,5 +17,3 @@ export const generateRound = () => {
   const question = progression.join(' ');
   return [question, correctAnswer];
 };
-
-export default { description, generateRound };
