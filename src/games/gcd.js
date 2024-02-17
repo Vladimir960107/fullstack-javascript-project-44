@@ -15,12 +15,14 @@ const findGreatestCommonDivisor = (number1, number2) => {
   return x;
 };
 
-export const description = 'Find the greatest common divisor of given numbers.';
+const description = 'Find the greatest common divisor of given numbers.';
 
-export const generateRound = () => {
+const generateRound = () => {
   const num1 = generateNumber(MIN_RANDOM_INT_DIVISOR, MAX_RANDOM_INT_DIVISOR);
   const num2 = generateNumber(MIN_RANDOM_INT_DIVISOR, MAX_RANDOM_INT_DIVISOR);
   const question = `${num1} ${num2}`;
   const correctAnswer = findGreatestCommonDivisor(num1, num2).toString();
   return [question, correctAnswer];
 };
+
+export default { description, generateRound };
