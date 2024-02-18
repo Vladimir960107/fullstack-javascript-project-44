@@ -6,10 +6,10 @@ const MAX_RANDOM_INT_PROG_START = 10;
 const PROG_LENGTH = 10;
 
 // Начальное сообщение игры
-const description = 'What number is missing in the progression?';
+export const description = 'What number is missing in the progression?';
 
 // Раунд игры
-const generateRound = () => {
+export const generateRound = () => {
   const startNumber = generateNumber(MIN_RANDOM_INT_PROG_START, MAX_RANDOM_INT_PROG_START);
   const step = generateNumber(MIN_RANDOM_INT_PROG_START, MAX_RANDOM_INT_PROG_START);
   const hiddenIndex = generateNumber(0, PROG_LENGTH - 1);
@@ -20,5 +20,3 @@ const generateRound = () => {
   const question = progression.join(' ');
   return [question, correctAnswer];
 };
-
-export default { description, generateRound };

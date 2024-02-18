@@ -18,13 +18,11 @@ const isPrime = (number) => {
 };
 
 // Начальное сообщение игры
-const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+export const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 // Раунд игры
-const generateRound = () => {
+export const generateRound = () => {
   const question = generateNumber(MIN_RANDOM_INT_PRIME, MAX_RANDOM_INT_PRIME);
   const correctAnswer = isPrime(question) ? 'yes' : 'no';
   return [question, correctAnswer];
 };
-
-export default { description, generateRound };

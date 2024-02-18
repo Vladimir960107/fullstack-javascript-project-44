@@ -19,10 +19,10 @@ const calculateExpression = (num1, num2, operation) => {
 };
 
 //* Initial game message */
-const description = 'What is the result of the expression?';
+export const description = 'What is the result of the expression?';
 
 /** Game Round */
-const generateRound = () => {
+export const generateRound = () => {
   const num1 = generateNumber(MIN_NUMBER, MAX_NUMBER);
   const num2 = generateNumber(MIN_NUMBER, MAX_NUMBER);
   const operation = OPERATIONS[generateNumber(0, OPERATIONS.length - 1)];
@@ -31,5 +31,3 @@ const generateRound = () => {
 
   return [question, correctAnswer];
 };
-
-export default { description, generateRound };
