@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 import playGame from '../src/index.js';
-import * as gcd from '../src/games/gcd.js';
+import { description, generateRound } from '../src/games/gcd.js';
 
-playGame(gcd);
+playGame({ description, generateRound });
